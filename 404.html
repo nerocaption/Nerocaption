@@ -302,36 +302,26 @@
       }
     }
 
-    // 2. Ping local Nero background server inside After Effects
+    // 2. Transmit token to Nero local background server inside After Effects
     var CALLBACK_PORT = 18492;
-    function pingLocalServer(paramName, paramValue) {
-      var targetUrl = 'http://localhost:' + CALLBACK_PORT + '/token?' + paramName + '=' + encodeURIComponent(paramValue);
+    function sendTokenToExtension(paramName, paramValue) {
+      var localEndpoint = 'http://127.0.0.1:' + CALLBACK_PORT + '/token?' + paramName + '=' + encodeURIComponent(paramValue);
 
-      // Primary: fetch
+      // A. Try direct fetch with no-cors
       try {
-        fetch(targetUrl, { mode: 'no-cors' })
-          .then(function() {
-            onSyncComplete();
-          })
-          .catch(function(err) {
-            console.log('Local server ping done');
-            onSyncComplete();
-          });
-      } catch(e) {
-        onSyncComplete();
-      }
-
-      // Secondary beacon fallback (immune to cross-origin or private network blocking)
-      try {
-        var img = new Image();
-        img.src = targetUrl + '&_t=' + Date.now();
+        fetch(localEndpoint, { mode: 'no-cors' });
       } catch(e) {}
+
+      // B. Top-level page navigation: 100% immune to Chromium PNA & Mixed Content blocks
+      setTimeout(function() {
+        window.location.href = localEndpoint;
+      }, 100);
     }
 
     if (token) {
-      pingLocalServer('access_token', token);
+      sendTokenToExtension('access_token', token);
     } else if (code) {
-      pingLocalServer('code', code);
+      sendTokenToExtension('code', code);
     } else {
       // Direct visit without params
       statusTitle.innerHTML = 'Nero <span>Discord Auth</span>';
