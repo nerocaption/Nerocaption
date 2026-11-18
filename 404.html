@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Logged In Successfully — NERO // AE PRO</title>
+  <title>Discord Auth — NERO // AE PRO</title>
   <link rel="icon" type="image/x-icon" href="./favicon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -111,14 +111,24 @@
       color: #4ade80;
     }
     .brand-tag {
-      font-size: 10px;
+      font-size: 11px;
       font-family: 'DM Mono', monospace;
       color: #94a3b8;
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 3px 8px;
-      border-radius: 6px;
+      padding: 4px 10px;
+      border-radius: 8px;
       letter-spacing: 0.05em;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .brand-tag img {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid #5865F2;
     }
 
     /* Main Card */
@@ -184,7 +194,7 @@
       50% { opacity: 0.4; transform: scale(0.85); }
     }
 
-    /* Icon Box */
+    /* Icon Box & User Avatar */
     .icon-wrapper {
       position: relative;
       width: 82px;
@@ -197,12 +207,20 @@
       align-items: center;
       justify-content: center;
       box-shadow: 0 10px 30px rgba(88, 101, 242, 0.35);
+      overflow: visible;
     }
     .icon-wrapper svg.clyde {
       width: 44px;
       height: 44px;
       fill: #5865f2;
       filter: drop-shadow(0 4px 14px rgba(88, 101, 242, 0.7));
+    }
+    .icon-wrapper img.user-avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+      display: none;
     }
     .icon-check {
       position: absolute;
@@ -245,6 +263,10 @@
       font-size: 14px;
       line-height: 1.55;
       margin-bottom: 24px;
+    }
+    p.subtext strong {
+      color: #ffffff;
+      font-weight: 700;
     }
 
     /* Progress bar */
@@ -296,6 +318,30 @@
       transform: translateY(-1px);
       box-shadow: 0 6px 24px rgba(34, 197, 94, 0.55);
       background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+    }
+
+    .btn-discord {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #5865F2 0%, #4752C4 100%);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      padding: 13px 24px;
+      border-radius: 14px;
+      font-size: 13.5px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      font-family: 'Space Grotesk', sans-serif;
+      box-shadow: 0 4px 18px rgba(88, 101, 242, 0.45);
+    }
+    .btn-discord:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(88, 101, 242, 0.65);
     }
 
     .btn-secondary {
@@ -350,22 +396,23 @@
       <div class="brand-icon">N</div>
       <div class="brand-title">NERO <span>//</span> AE PRO</div>
     </a>
-    <div class="brand-tag">DISCORD AUTH ACTIVE</div>
+    <div id="nav-brand-tag" class="brand-tag">DISCORD AUTH ACTIVE</div>
   </nav>
 
   <!-- Center Card -->
   <div class="main-wrap">
     <div class="card">
-      <div class="badge">
+      <div id="badge-container" class="badge">
         <span class="badge-dot"></span>
-        NERO &bull; DISCORD CONNECTED
+        <span id="badge-text">NERO &bull; DISCORD CONNECTED</span>
       </div>
 
       <div class="icon-wrapper">
-        <svg class="clyde" viewBox="0 0 127.14 96.36">
+        <svg id="clyde-icon" class="clyde" viewBox="0 0 127.14 96.36">
           <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,45.91,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,45.91,96.12,53,91.08,65.69,84.69,65.69Z"/>
         </svg>
-        <div class="icon-check">
+        <img id="user-avatar-img" class="user-avatar-img" alt="Discord Avatar" />
+        <div id="icon-check" class="icon-check">
           <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
         </div>
       </div>
@@ -377,7 +424,7 @@
         <div class="progress-bar" id="progress-bar"></div>
       </div>
 
-      <div class="actions-grid">
+      <div class="actions-grid" id="actions-container">
         <button class="btn-primary" id="btn-open-ae" onclick="returnToAfterEffects()">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <polygon points="5 3 19 12 5 21 5 3"></polygon>
@@ -400,70 +447,136 @@
   </div>
 
   <script>
+    var DISCORD_CLIENT_ID = '1535710823220125836';
+    var CALLBACK_PORT = 18492;
+    var REDIRECT_URI = window.location.origin + window.location.pathname;
+
     var hash = window.location.hash.substring(1);
     var hashParams = new URLSearchParams(hash);
     var token = hashParams.get('access_token');
     var queryParams = new URLSearchParams(window.location.search);
+    var status = queryParams.get('status');
     var code = queryParams.get('code');
-    var rawParam = token ? ('access_token=' + encodeURIComponent(token)) : (code ? ('code=' + encodeURIComponent(code)) : '');
 
     var pBar = document.getElementById('progress-bar');
     var statusTitle = document.getElementById('status-title');
     var statusDesc = document.getElementById('status-desc');
     var footerNote = document.getElementById('footer-note');
+    var clydeIcon = document.getElementById('clyde-icon');
+    var userAvatarImg = document.getElementById('user-avatar-img');
+    var navBrandTag = document.getElementById('nav-brand-tag');
+    var actionsContainer = document.getElementById('actions-container');
 
     // Smoothly animate progress bar
     setTimeout(function() {
       if (pBar) pBar.style.width = '100%';
     }, 80);
 
-    // 1. Send postMessage if opened as a popup by extension
-    if (token && window.opener) {
-      try { window.opener.postMessage({ type: 'NERO_DISCORD_TOKEN', token: token }, '*'); } catch(e) {}
-    } else if (code && window.opener) {
-      try { window.opener.postMessage({ type: 'NERO_DISCORD_CODE', code: code }, '*'); } catch(e) {}
+    function displayUserProfile(user) {
+      if (!user) return;
+      var name = user.global_name || user.username || 'Discord User';
+      var avatarUrl = user.avatar
+        ? ('https://cdn.discordapp.com/avatars/' + user.id + '/' + user.avatar + '.png?size=128')
+        : ('https://cdn.discordapp.com/embed/avatars/' + ((user.id ? (user.id >> 22) % 6 : 0)) + '.png');
+
+      if (userAvatarImg) {
+        userAvatarImg.src = avatarUrl;
+        userAvatarImg.style.display = 'block';
+        if (clydeIcon) clydeIcon.style.display = 'none';
+      }
+
+      if (navBrandTag) {
+        navBrandTag.innerHTML = '<img src="' + avatarUrl + '" /> DISCORD // ' + (user.username || name).toUpperCase();
+      }
+
+      statusTitle.innerHTML = 'Welcome, <span>' + name + '</span>!';
+      statusDesc.innerHTML = 'Your Discord account is connected and synced with Nero in After Effects.';
     }
 
-    // 2. Transmit to AE background server WITHOUT leaving this website!
-    var CALLBACK_PORT = 18492;
-    if (rawParam) {
-      var targetEndpoint = 'http://127.0.0.1:' + CALLBACK_PORT + '/token?' + rawParam;
+    // Check existing stored user
+    try {
+      var saved = localStorage.getItem('nero_discord_user');
+      if (saved) {
+        var existingUser = JSON.parse(saved);
+        displayUserProfile(existingUser);
+      }
+    } catch(e) {}
 
-      // Technique A: Silent hidden iframe (never changes browser URL bar!)
-      try {
-        var silentFrame = document.createElement('iframe');
-        silentFrame.style.display = 'none';
-        silentFrame.style.width = '0px';
-        silentFrame.style.height = '0px';
-        silentFrame.style.border = 'none';
-        silentFrame.src = targetEndpoint;
-        document.body.appendChild(silentFrame);
-      } catch(eFrame) {}
+    // SCENARIO 1: Fresh token arriving from Discord OAuth
+    if (token && status !== 'success') {
+      statusTitle.textContent = 'Linking Discord...';
+      statusDesc.textContent = 'Fetching profile and syncing to Nero in After Effects...';
+      footerNote.textContent = 'Transmitting credentials to local After Effects session...';
 
-      // Technique B: Silent background fetch
-      try {
-        fetch(targetEndpoint, { mode: 'no-cors' }).catch(function() {});
-      } catch(eFetch) {}
-
-      // Technique C: Image beacon
-      try {
-        var beacon = new Image();
-        beacon.src = targetEndpoint + '&_t=' + Date.now();
-      } catch(eBeacon) {}
-
-      setTimeout(function() {
-        if (footerNote) {
-          footerNote.textContent = '✓ Profile Synced to AE! Switch back to After Effects.';
+      // 1. Fetch Discord profile immediately
+      fetch('https://discord.com/api/v10/users/@me', {
+        headers: { 'Authorization': 'Bearer ' + token }
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(user) {
+        if (user && (user.id || user.username)) {
+          localStorage.setItem('nero_discord_user', JSON.stringify(user));
+          displayUserProfile(user);
         }
-      }, 700);
+      })
+      .catch(function() {})
+      .finally(function() {
+        // 2. Perform instant bounce to local AE server
+        // Port 18492 receives the token, syncs AE, and responds with 302 -> ?status=success
+        var targetEndpoint = 'http://127.0.0.1:' + CALLBACK_PORT + '/token?access_token=' + encodeURIComponent(token);
+        
+        // Also postMessage if opened as popup
+        if (window.opener) {
+          try { window.opener.postMessage({ type: 'NERO_DISCORD_TOKEN', token: token }, '*'); } catch(e) {}
+        }
+
+        // Top-level navigation avoids all PNA / mixed-content blocks
+        window.location.replace(targetEndpoint);
+      });
+
+    // SCENARIO 2: Successfully bounced back from After Effects (status=success)
+    } else if (status === 'success' || (token && status === 'success')) {
+      statusTitle.textContent = 'Logged In Successfully!';
+      statusDesc.innerHTML = 'Your Discord account is linked. Open After Effects to continue.';
+      footerNote.textContent = '✓ Profile Synced to AE! Switch back to After Effects.';
+
+      try {
+        var uRaw = localStorage.getItem('nero_discord_user');
+        if (uRaw) {
+          displayUserProfile(JSON.parse(uRaw));
+          footerNote.textContent = '✓ Synced to After Effects! You can close this tab and return to AE.';
+        }
+      } catch(e) {}
+
+    // SCENARIO 3: Direct visit without active login session
     } else {
-      statusTitle.textContent = 'Nero Discord Auth';
-      statusDesc.textContent = 'Please start the login process from inside the Nero After Effects extension.';
-      footerNote.textContent = 'Waiting for authorization...';
+      var hasStoredUser = false;
+      try {
+        hasStoredUser = !!localStorage.getItem('nero_discord_user');
+      } catch(e) {}
+
+      if (!hasStoredUser) {
+        statusTitle.textContent = 'Connect Discord';
+        statusDesc.textContent = 'Link your Discord account to verify your identity and unlock Nero in After Effects.';
+        footerNote.textContent = 'Sign in using your official Discord account.';
+
+        var authUrl = 'https://discord.com/oauth2/authorize?client_id=' + DISCORD_CLIENT_ID + '&redirect_uri=' + encodeURIComponent(REDIRECT_URI) + '&response_type=token&scope=identify&prompt=consent';
+
+        actionsContainer.innerHTML = `
+          <a href="${authUrl}" class="btn-discord">
+            <svg viewBox="0 0 127.14 96.36" width="18" height="18" fill="currentColor">
+              <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,45.91,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,45.91,96.12,53,91.08,65.69,84.69,65.69Z"/>
+            </svg>
+            Log In with Discord
+          </a>
+          <a href="./index.html" class="btn-secondary">
+            &larr; Back to Nero Website
+          </a>
+        `;
+      }
     }
 
     function returnToAfterEffects() {
-      // If opened in popup, attempt close
       try {
         window.close();
       } catch(e) {}

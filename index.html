@@ -62,10 +62,42 @@
       "downloadUrl": "https://github.com/noxadi750/nero-releases/releases/latest/download/NeroCaption_v1_Setup.exe"
     }
     </script>
-    <script type="module" crossorigin src="./assets/index-CjTxLQ2D.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-gbx_D8Vx.css">
+    <script type="module" crossorigin src="./assets/index-D-qBgGL-.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DVmVk7Vf.css">
   </head>
   <body class="bg-[#0d0f0c] text-[#ede9df] antialiased selection:bg-[#b6f34b] selection:text-black film-grain">
-    <div id="root"></div>
+    <div id="root"></div>
+    <script>
+      (function() {
+        function syncDiscordNavbar() {
+          try {
+            var raw = localStorage.getItem('nero_discord_user');
+            if (!raw) return;
+            var user = JSON.parse(raw);
+            if (!user || (!user.username && !user.id)) return;
+            var navLinks = document.querySelectorAll('a[href*="discord.gg"], a[title*="Discord"], a[title*="unoxeoth"]');
+            navLinks.forEach(function(link) {
+              var span = link.querySelector('span');
+              if (span && (span.textContent.indexOf('DISCORD') !== -1 || span.textContent.indexOf('UNOXEOTH') !== -1)) {
+                var name = (user.global_name || user.username || 'CONNECTED').toUpperCase();
+                span.textContent = 'DISCORD // ' + name;
+              }
+              var avatar = user.avatar ? ('https://cdn.discordapp.com/avatars/' + user.id + '/' + user.avatar + '.png?size=64') : null;
+              if (avatar && !link.querySelector('.nav-user-pfp')) {
+                var img = document.createElement('img');
+                img.className = 'nav-user-pfp';
+                img.src = avatar;
+                img.style.cssText = 'width: 18px; height: 18px; border-radius: 50%; margin-right: 6px; object-fit: cover; border: 1.5px solid #5865F2; display: inline-block; vertical-align: middle;';
+                link.insertBefore(img, link.firstChild);
+              }
+            });
+          } catch(e) {}
+        }
+        window.addEventListener('DOMContentLoaded', syncDiscordNavbar);
+        setTimeout(syncDiscordNavbar, 400);
+        setTimeout(syncDiscordNavbar, 1200);
+        setTimeout(syncDiscordNavbar, 2500);
+      })();
+    </script>
   </body>
 </html>
