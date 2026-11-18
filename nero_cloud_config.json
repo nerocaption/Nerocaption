@@ -1,0 +1,15 @@
+{
+  "status": "active",
+  "version": "1.0.0",
+  "download_url": "https://github.com/nerocaption/Nerocaption/releases/download/1.0.0/NeroCaption_v1_Setup.exe",
+  "silent_update": true,
+  "license_required": false,
+  "announcement": "",
+  "purchase_url": "https://nerocaption.github.io/Nerocaption",
+  "valid_license_keys": [
+    "NERO-PRO-2026-X79",
+    "NERO-VIP-UNOXEO",
+    "NERO-MASTER-KEY",
+    "NERO-LIFETIME-ACCESS"
+  ]
+}
