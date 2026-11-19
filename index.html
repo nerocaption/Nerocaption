@@ -24,7 +24,7 @@
     <meta property="og:title" content="NeroCaption — Kinetic Typography & AI Subtitles AE Extension" />
     <meta property="og:description" content="Generate word-by-word viral animated subtitles & kinetic motion presets directly in Adobe After Effects with offline AI. 100% Free Lifetime." />
     <meta property="og:image" content="./nero_logo_master.png" />
-    <meta property="og:site_name" content="NeroCaption — AE Extension" />
+    <meta property="og:site_name" content="NeroCaption" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
@@ -85,8 +85,9 @@
       "downloadUrl": "https://github.com/noxadi750/nero-releases/releases/latest/download/NeroCaption_v1_Setup.exe"
     }
     </script>
-    <script type="module" crossorigin src="./assets/index-C2IxW1xQ.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-DS0UHu4M.css">
+    <!-- Dual-Path Asset Loader: Works if files are in repository root OR inside /assets/ -->
+    <link rel="stylesheet" crossorigin href="./index-DS0UHu4M.css" onerror="this.onerror=null;this.href='./assets/index-DS0UHu4M.css';">
+    <script type="module" crossorigin src="./index-C2IxW1xQ.js" onerror="this.onerror=null;var s=document.createElement('script');s.type='module';s.crossOrigin='';s.src='./assets/index-C2IxW1xQ.js';document.head.appendChild(s);"></script>
   </head>
   <body class="bg-[#0d0f0c] text-[#ede9df] antialiased selection:bg-[#b6f34b] selection:text-black film-grain">
     <div id="root"></div>
