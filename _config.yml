@@ -1,0 +1,8 @@
+title: NeroCaption
+name: NeroCaption
+description: NeroCaption — Kinetic Typography & AI Subtitles Extension for Adobe After Effects
+url: https://nerocaption.github.io
+baseurl: /Nerocaption
+google_site_verification: iaKm1FPyuJ_xiQI29O2od4iknla7TQD02U3ncrYmiuw
+markdown: kramdown
+permalink: /:title/
